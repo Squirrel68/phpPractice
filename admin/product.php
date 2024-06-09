@@ -1,9 +1,16 @@
 <?php
 require_once './header.php';
+require_once '../connectDB.php';
+$sql = "SELECT products.*, categories.name as cat_name 
+FROM products 
+JOIN categories ON products.category_id = categories.id 
+ORDER BY products.id DESC";
+$products = mysqli_query($connect, $sql);
+mysqli_close($connect);
 ?>
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-        <li><a href="index.php">Dashboard</a></li>
+        <li><a href="index.php">Trang chủ</a></li>
         <li><a href="user.php">Quản lý thành viên</a></li>
         <li class="active"><a href="product.php">Quản lý sản phẩm</a></li>
         <li><a href="order.php">Quản lý đơn hàng</a></li>
@@ -17,7 +24,7 @@ require_once './header.php';
         </div>
     </div><!--/.row-->
     <div id="toolbar" class="btn-group">
-        <a href="product-add.html" class="btn btn-success">Thêm sản phẩm</a>
+        <a href="./productAddFrm.php" class="btn btn-success">Thêm sản phẩm</a>
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -36,30 +43,20 @@ require_once './header.php';
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="">1</td>
-                                <td style="">Sản phẩm số 1</td>
-                                <td style="">18.500.000 vnd</td>
-                                <td style="text-align: center"><img width="130" height="180" src="img/download.jpeg" /></td>
-                                <td><span class="label label-success">Còn hàng</span></td>
-                                <td>Danh mục số 1</td>
-                                <td class="form-group">
-                                    <a href="product-edit.html" class="btn btn-primary">Sửa</a>
-                                    <a href="product-edit.html" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="">1</td>
-                                <td style="">Sản phẩm số 1</td>
-                                <td style="">18.500.000 vnd</td>
-                                <td style="text-align: center"><img width="130" height="180" src="img/download.jpeg" /></td>
-                                <td><span class="label label-success">Còn hàng</span></td>
-                                <td>Danh mục số 1</td>
-                                <td class="form-group">
-                                    <a href="product-edit.html" class="btn btn-primary">Sửa</a>
-                                    <a href="product-edit.html" class="btn btn-danger">Xóa</a>
-                                </td>
-                            </tr>
+                            <?php foreach ($products as $product) : ?>
+                                <tr>
+                                    <td style=""><?php echo $product['id'] ?></td>
+                                    <td style=""><?php echo $product['name'] ?></td>
+                                    <td style=""><?php echo $product['price'] ?></td>
+                                    <td style="text-align: center"><img width="130" height="180" src="./img/<?php echo $product['thumbnail'] ?>" /></td>
+                                    <td><span class="label label-success">Còn hàng</span></td>
+                                    <td><?php echo $product['cat_name'] ?></td>
+                                    <td class="form-group">
+                                        <a href="./productUpdateFrm.php?id=<?php echo $product['id'] ?>" class="btn btn-primary">Sửa</a>
+                                        <a href="./productDeleteCtr.php?id=<?php echo $product['id'] ?>" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>

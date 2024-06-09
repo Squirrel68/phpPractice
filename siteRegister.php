@@ -6,7 +6,7 @@ require_once "./header.php";
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-lg-5">
-                    <form role="form" action="./userAddCtr.php" method="post" enctype="multipart/form-data">
+                    <form role="form" action="./siteRegisterCtr.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tên người dùng</label>
                             <input required name="fullname" class="form-control" placeholder="">
@@ -34,16 +34,7 @@ require_once "./header.php";
                         </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="form-group">
-                        <label>Vai trò</label>
-                        <select name="role" class="form-control">
-                            <option value="admin">Admin</option>
-                            <option value="user" selected>User</option>
-                            <option value="shipper">Shipper</option>
-                        </select>
-                    </div>
-
-                    <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                    <button name="sbm" type="submit" class="btn btn-success">Đăng ký</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>
                 </div>
                 </form>
@@ -55,3 +46,7 @@ require_once "./header.php";
 </div>
 </div>
 </div>
+
+<?php
+require_once "./footer.php";
+?>

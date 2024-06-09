@@ -224,3 +224,21 @@ body {
 #log-in a:hover {
   text-decoration: underline;
 }
+#seach {
+  position: relative;
+}
+#search-dropdown {
+  /* display: none; */
+  position: absolute;
+  top: 8%;
+  right: 40%;
+  width: 30%;
+  background: #fff;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  z-index: 1;
+}
+.search-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

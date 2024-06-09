@@ -1,10 +1,13 @@
+<?php
+require_once './adminLoginCheckMiddleware.php';
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FoodWeb Admin</title>
+    <title>True Breakfast Admin</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -14,8 +17,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><span>FoodWeb</span>Shop</a>
-                <a class="log-out">Đăng xuất</a>
+                <a class="navbar-brand" href="#"><span>True</span>Breakfast</a>
+                <a class="log-out" href="./adminLogoutCtr.php">Đăng xuất</a>
             </div>
 
         </div><!-- /.container-fluid -->

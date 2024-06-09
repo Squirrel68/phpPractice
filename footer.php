@@ -1,10 +1,15 @@
+<?php
+$sql = "SELECT * FROM categories";
+$categories = mysqli_query($connect, $sql);
+
+?>
 <!-- Footer Top  -->
 <div id="footer-t">
     <div class="container">
         <div class="row">
             <div id="logo-f" class="col-lg-3 col-md-6 col-sm-12">
                 <h2>
-                    <a class="navbar-brand" href="#"><span>True</span>Breakfast</a>
+                    <a class="navbar-brand" href="./index.php"><span>True</span>Breakfast</a>
                 </h2>
                 <!-- Generate content for introduce a food store in Vietnamese  -->
                 <p>
@@ -20,12 +25,13 @@
             </div>
             <div id="services" class="col-lg-3 col-md-6 col-sm-12">
                 <h3>Menu</h3>
-                <p>Món chính</p>
-                <p>Đồ uống</p>
+                <?php foreach ($categories as $category) : ?>
+                    <p><a style="color:#fff" href="./category.php?id=<?php echo $category['id'] ?>"><?php echo $category['name'] ?></a></p>
+                <?php endforeach ?>
             </div>
             <div id="hotline" class="col-lg-3 col-md-6 col-sm-12">
                 <h3>Hotline</h3>
-                <p>Phone Sale: (+84) 0988 550 553</p>
+                <p>Phone Sale: (+84) 0966737526</p>
                 <p>Email: truebreakfast.vn@gmail.com</p>
             </div>
         </div>

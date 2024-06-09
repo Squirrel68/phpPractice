@@ -11,7 +11,7 @@ mysqli_close($connect);
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-lg-5">
-                    <form role="form" action="/admin/products/store" method="post" enctype="multipart/form-data">
+                    <form role="form" action="./productAddCtr.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tên sản phẩm</label>
                             <input required name="name" class="form-control" placeholder="">
@@ -25,18 +25,16 @@ mysqli_close($connect);
                 <div class="col-lg-5">
                     <div class="form-group">
                         <label>Ảnh sản phẩm</label>
-
-                        <input onchange="uploadImages(this)" type="file" name="thumbnail" id="imageUpload" multiple>
+                        <input type="file" name="thumbnail">
                     </div>
-                    <div id="imagePreview"></div>
                     <div class="form-group">
                         <label>Danh mục</label>
                         <select name="cat_id" class="form-control">
-                            <?php foreach ($categories as $category) { ?>
+                            <?php foreach ($categories as $category) : ?>
                                 <option value="<?php echo $category['id'] ?>">
                                     <?php echo $category['name'] ?>
                                 </option>
-                            <?php } ?>
+                            <?php endforeach ?>
                         </select>
                     </div>
 
